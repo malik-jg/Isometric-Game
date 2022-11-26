@@ -35,7 +35,7 @@ public class IsometricRenderer{
 	private double[][] temperature;
 	
 	
-	//TESTING VORONOI
+	//TESTING VORONOI change
 	private double[][] voronoiNoise;
 	private double[][] perlinNoise1;
 	private double[][] perlinNoise2;
