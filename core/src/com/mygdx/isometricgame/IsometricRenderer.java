@@ -24,11 +24,11 @@ public class IsometricRenderer{
 	
 	private int renderWidth = GameScreen.WIDTH + 320;
 	private int renderHeight = GameScreen.HEIGHT + 180;
-	private float renderX = -832;
+	private float renderX =  -832;
 	private float renderY = -485;
 	
 	
-	
+	private double max = 1.0;
 	
 	private WorldGenerator worldGenerator;
 	private double[][] humidity;
