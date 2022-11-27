@@ -56,7 +56,7 @@ public class WorldGenerator {
 				.height(mapSize)
 				.width(mapSize)
 				.seed(seedVoronoi)
-				.frequency(3)
+				.frequency(5)
 				.generate();
 		
 //		seedPerlin1 = (long)(new Random().nextGaussian() * 255);
