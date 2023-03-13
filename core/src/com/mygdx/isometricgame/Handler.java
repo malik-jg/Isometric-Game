@@ -7,6 +7,10 @@ public class Handler {
     private boolean left = false;
     private boolean zoomIn = false;
     private boolean zoomOut = false;
+    private boolean clockwiseRotation = false;
+    private boolean counterClockwiseRotation = false;		
+    private boolean leftClick = false;
+    private boolean rightClick = false;
     
     public void update(){
     	
@@ -49,6 +53,30 @@ public class Handler {
 	}
 	public void setZoomOut(boolean zoomOut) {
 		this.zoomOut = zoomOut;
+	}
+	public boolean isClockwiseRotation() {
+		return clockwiseRotation;
+	}
+	public void setClockwiseRotation(boolean clockwiseRotation) {
+		this.clockwiseRotation = clockwiseRotation;
+	}
+	public boolean isCounterClockwiseRotation() {
+		return counterClockwiseRotation;
+	}
+	public void setCounterClockwiseRotation(boolean counterClockwiseRotation) {
+		this.counterClockwiseRotation = counterClockwiseRotation;
 	}  
+	public boolean leftClick() {
+		return leftClick;
+	}
+	public void leftClick(boolean leftClick) {
+		this.leftClick = leftClick;
+	}
+	public boolean rightClick() {
+		return rightClick;
+	}
+	public void rightClick(boolean rightClick) {
+		this.rightClick = rightClick;
+	}
 	
 }

@@ -3,6 +3,8 @@ package com.mygdx.isometricgame;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.math.Vector3;
 
 
 public class Camera extends GameObject{
@@ -11,8 +13,6 @@ public class Camera extends GameObject{
 	
 	public Camera(Handler handler, OrthographicCamera camera, IsometricRenderer renderer) {
 		super(handler, camera, renderer);
-		x = 0;
-		y = 0;
 		speedMultiplier = 125;
 		zoomMultiplier = 1;
 	}
@@ -26,6 +26,7 @@ public class Camera extends GameObject{
 	}
 	
 	public void moveCamera(float delta) {
+		//CARDINAL MOVEMENT
 		if(handler.isUp()){
 			speedMultiplier = 125;
 			camera.translate(0, delta * speedMultiplier, 0);
@@ -69,7 +70,7 @@ public class Camera extends GameObject{
         	speedMultiplier = 0;
         	camera.translate(delta * speedMultiplier, 0, 0);
 			renderer.setRenderX(renderer.getRenderX() + delta * speedMultiplier);
-
+		//ZOOM 
         }
 		if(handler.isZoomIn()) {
 			zoomMultiplier = 1;
@@ -87,8 +88,20 @@ public class Camera extends GameObject{
 			zoomMultiplier = 0;
 			camera.zoom += delta * zoomMultiplier;
 		}
+		
+	}
+	
+	public float positionX() {
+		return camera.position.x;
 	}
 
+	public float positionY() {
+		return camera.position.y;
+	}
+	public void setCameraPosition(float x, float y) {
+		this.camera.position.set(x, y, 10);
+	}
+	
 
 	
 	public Rectangle getBoundsHorizontal() {

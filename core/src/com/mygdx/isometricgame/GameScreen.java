@@ -1,18 +1,10 @@
 package com.mygdx.isometricgame;
 
-import java.util.ArrayList;
-
-import java.util.Collection;
-
-
 import com.badlogic.gdx.Gdx;
-
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
@@ -20,15 +12,14 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 
-
 public class GameScreen extends ScreenAdapter{
 	
 	
 	private final Vector2 mouseInWorld2D = new Vector2();
 	private final Vector3 mouseInWorld3D = new Vector3();
 	
-	public static final int WIDTH = 320*4;
-	public static final int HEIGHT = 180 * 4;
+	public static final int WIDTH = 1280;
+	public static final int HEIGHT = 720;
 	
 	private SpriteBatch batch;
 	private OrthographicCamera camera;
@@ -43,7 +34,8 @@ public class GameScreen extends ScreenAdapter{
 	
 	
 	private AssetManager assetsManager;
-	private TextureAtlas textureAtlas;
+	private TextureAtlas textureAtlasBlocksTest;
+	private TextureAtlas textureAtlasMegaBlocks;
 	private TextureRegion textureRegion;
 	
 	
@@ -61,15 +53,17 @@ public class GameScreen extends ScreenAdapter{
 		
 		assetsManager = new AssetManager();
 		assetsManager.load("pack.atlas", TextureAtlas.class);
+		assetsManager.load("MegaPack.atlas", TextureAtlas.class);
 		assetsManager.finishLoading();
 		
 		
-		textureAtlas = assetsManager.get("pack.atlas");
+		textureAtlasBlocksTest = assetsManager.get("pack.atlas");
+		textureAtlasMegaBlocks = assetsManager.get("MegaPack.atlas");
 		
 	}
 	@Override
 	public void show(){
-		camera.position.set(0 ,0,10);
+		camera.position.set(0 ,48, 10);
 		player = new Player(handler);	
 	}	
 	
@@ -97,8 +91,19 @@ public class GameScreen extends ScreenAdapter{
 		
 		//renderer.drawGround(batch);
 
+		
+		//test noises below - do not type above
+		
 		//renderer.createWorld(batch, textureAtlas, textureRegion);
-		renderer.createVoronoiMap(batch,textureAtlas,textureRegion);
+		
+		
+		renderer.update(handler, player, cameraC);
+		renderer.render(batch,textureAtlasBlocksTest,textureRegion, textureAtlasMegaBlocks);
+		
+		
+		//test noises above - do not type below
+		
+		
 		player.render(batch);
 		player.update(delta);
 		

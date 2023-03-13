@@ -7,13 +7,19 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 
 public abstract class GameObject{
+		
 	protected int x;
 	protected int y;
 	protected int w;
 	protected int h;
 	protected int speedMultiplier;
 	protected Texture image;
+	
 	protected Vector2 pos;
+	
+	protected Vector2 arrayPos;
+	
+
 	
 	protected Handler handler;
 	protected OrthographicCamera camera;
@@ -71,5 +77,31 @@ public abstract class GameObject{
 	public void setSpeedMultiplier(int speedMultiplier) {
 		this.speedMultiplier = speedMultiplier;
 	}
+	public Vector2 getPos() {
+		return pos;
+	}
+	public void setPos(float x, float y) {
+		if(this instanceof Camera) {
+			this.camera.position.set(x, y, 10);
+		}
+		else {
+			this.pos.x = x;
+			this.pos.y = y;
+		}
+	}
+	public void setPos(Vector2 pos) {
+		if(this instanceof Camera) {
+			this.camera.position.set(pos.x, pos.y, 10);
+		}
+		else {
+			this.pos = pos;
+		}
+	}
+	public Vector2 getArrayPos() {
+		return arrayPos;
+	}
+	
+	
+	
 	
 }

@@ -2,22 +2,20 @@ package com.mygdx.isometricgame;
 
 
 import com.badlogic.gdx.Gdx;
-
 import com.badlogic.gdx.Input;
 
 
 public class KeyInput {
 	
 	private Handler handler;
-	
-	
+
 	public KeyInput(Handler handler) {
 		this.handler = handler;
 	}	
 	public void update() {
-		move();
+		movement();
 	}
-	public void move() {
+	public void movement() {
 		if(Gdx.input.isKeyPressed(Input.Keys.W)) {
 			handler.setUp(true);
 		}
@@ -47,12 +45,20 @@ public class KeyInput {
 		}
 		else {
 			handler.setZoomIn(false);
+		}
 		if(Gdx.input.isKeyPressed(Input.Keys.E)) {
 			handler.setZoomOut(true);
 		}
 		else {
 			handler.setZoomOut(false);
 		}
+		
+		
+		if(Gdx.input.isKeyJustPressed(Input.Keys.N)) {
+			handler.setCounterClockwiseRotation(true);
+		}
+		if(Gdx.input.isKeyJustPressed(Input.Keys.M)) {
+			handler.setClockwiseRotation(true);
 		}
 	}
 }
